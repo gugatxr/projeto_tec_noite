@@ -1,22 +1,28 @@
 <?php
-  require_once '../configuracoes/banco_dados.config.php';
+//Corrige caracteres especiais.
+ini_set('default_charset' , 'utf-8');
 
-  class bd extends PDO{
+//classe de conexão com o banco de dados
+      class conexaobd {
 
-    function __CONSTRUCT($vDsn, $vUsuario, $vSenha){
-      try{
-        $teste = PDO::__CONSTRUCT($vDsn, $vUsuario, $vSenha);
-      } catch (PDOException $erro){
-        echo 'Conexão falhou: '. $erro->getMessage();
+        private $vServidor = 'localhost';
+        private $vDatabase = 'imobiliaria';
+        private $vUsuario = 'root';
+        private $vSenha = 'wanrltwaez';
+        private $vConexao;
+
+        function __construct(){
+          $this->conecta();
+        }
+
+        function conecta(){
+          $this->vConexao = mysqli_connect($this->vServidor, $this->vUsuario, $this->vSenha, $this->vDatabase)
+            or die("Erro ao conectar ao servidor; " . mysql_error());
+        }
+        function query($vSql){
+          $vResultado = mysqli_query($this->vConexao, $vSql);
+          return $vResultado;
+        }
       }
-    }
-
-    function consulta($vQuery){
-      $resultado = PDO:: query ($vQuery);
-      if(!$resultado ){
-        echo 'Erro na solicitação';
-      }
-    }
-  }
-  $bd = new bd($vDsnSemBase, $vUsuario, $vSenha);
-  
+      $bd = new conexaobd();
+?>

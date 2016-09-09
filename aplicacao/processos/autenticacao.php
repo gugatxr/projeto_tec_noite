@@ -1,27 +1,39 @@
-<?php
-  require_once '../classes/bd.class.php';
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="css/style.css" media="screen" title="no title">
+  </head>
+  <body>
+    <?php
+      require_once '../classes/bd.class.php';
 
-  $vSenha = $_POST['senha'];
-  $vUsuario = $_POST['usuario'];
+      //$vSenha = $_POST['senha'];
+      //$vUsuario = $_POST['usuario'];
+      $vSenha = "admin";
+      $vUsuario = "admin";
+      $vConsulta_sql = "SELECT nome , id_permissoes FROM imobiliaria.usuarios WHERE usuario = '$vUsuario' AND senha = '$vSenha' ";
 
-  //Consulta sql para validar o login.
-    $resultado = $bd->query("SELECT nome, id_permissoes FROM imobiliaria.usuarios WHERE usuario = '$vUsuario' AND senha = '$vSenha' ");
-  //@var int resultado
-  //rowCount retorna o numero de linhas do resultado da consulta
-    $resultado = $resultado->rowCount();
-  // se retornar 1 linha para ser valido
-  // para 0 não ha registro no banco de Dados
-  //se retornar mais de 1 precisa ser revisado o banco de dados
-  if($resultado === 1)
-  {
-    echo "Logado com sucesso!";
 
-  }elseif($resultado === 0)
-  {
-    echo "Dados incorretos";
-    // if(session_id() == '' || !isset($_SESSION))
-    // {
-    //   // session isn't started
-    //   session_start();
-    // }
-  }
+      //Consulta no sql para validação de LogicException
+      $vResultado_autenticacao = $bd->query($vConsulta_sql);
+      $vNumero_registro = mysqli_num_rows($vResultado_autenticacao);
+      $vDados_do_usuario = mysqli_fetch_array($vResultado_autenticacao);
+      if ($vNumero_registro === 0) {
+        echo "Usuário ou senha inválida. Tente novamente";
+      }
+      else {
+      ?>
+         <div style='
+                position'>
+
+              Login aceito <br>
+              Bem Vindo  <?php echo $vDados_do_usuario['nome'] ?> <div>
+      <?php }
+      ?>
+
+
+
+  </body>
+</html>
