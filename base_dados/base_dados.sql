@@ -24,7 +24,7 @@ CREATE TABLE usuarios(
   CONSTRAINT PrkPermissoes FOREIGN KEY (id_permissoes) REFERENCES permissoes(id)
 );
 
- 
+
 CREATE VIEW usuarios_permissoes
 AS SELECT u.nome, u.usuario, p.descricao
 FROM usuarios u
@@ -32,7 +32,7 @@ INNER JOIN permissoes p ON (p.id=u.id_permissoes);
 
 -- Tabela imoveis
 -- Tabela fotos
-CREATE TABLE 
+-- CREATE TABLE
 -- tabela videos
 -- Tabela clientes
 -- Tabela Bairros

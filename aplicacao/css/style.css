@@ -1,0 +1,19 @@
+
+/*estilos tela de login*/
+.container {
+margin:0px;
+background: #c9c0c8
+}
+
+.box-login{
+position: relative;
+text-align:center;
+left:480px;
+top:200px;
+width:360px;
+background-color:#fff;
+border-style: solid;
+box-shadow: 3px 2px 1px #9999999;
+border-radius:10px;
+
+}
