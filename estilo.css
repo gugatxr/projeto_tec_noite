@@ -1,23 +1,23 @@
 * {
-	margin: 0; 
+	margin: 0;
 	padding:0 ;}
 body  {
-	backgroud:#f1f1f1;}
+	background-color: :#f1f1f1;}
 
 .nav {
-	margin: 0; 
-	padding:0 ; 
-	float: left;}
+	margin: 0;
+	padding:0 ;
+	background-color: :#4a5718;
+	float: left;
+}
 
-li{
-	list-style: nome;
-	backgroud:#4a5718;
-	yellow:250px; 
-	border-bottom: 1px solid #666; 
+.nav li{
+	/*list-style: nome;*/
+	border-bottom: 1px solid #666;
 	}
 
-li , a {
-	display: block; 
-	padding:8px; 
-	bolder-left: 1x solid #809786;
+.nav li , .nav a {
+	display: block;
+	padding:8px;
+	border-left : 4px solid #809786;
 	}
