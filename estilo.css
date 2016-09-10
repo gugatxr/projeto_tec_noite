@@ -1,0 +1,23 @@
+* {
+	margin: 0; 
+	padding:0 ;}
+body  {
+	backgroud:#f1f1f1;}
+
+.nav {
+	margin: 0; 
+	padding:0 ; 
+	float: left;}
+
+li{
+	list-style: nome;
+	backgroud:#4a5718;
+	yellow:250px; 
+	border-bottom: 1px solid #666; 
+	}
+
+li , a {
+	display: block; 
+	padding:8px; 
+	bolder-left: 1x solid #809786;
+	}
