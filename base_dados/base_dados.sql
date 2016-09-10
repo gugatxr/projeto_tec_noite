@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS usuarios(
   CONSTRAINT PrkPermissoes FOREIGN KEY (id_permissoes) REFERENCES permissoes(id)
 );
 
+<<<<<<< HEAD
 -- tabela estados
 CREATE TABLE IF NOT EXISTS estados(
 	id INT(10) PRIMARY KEY AUTO_INCREMENT,
@@ -108,6 +109,18 @@ p.modulo2, p.modulo3, p.modulo4
 FROM usuarios u
 INNER JOIN permissoes p ON (p.id=u.id_permissoes);
 
+=======
+
+CREATE VIEW usuarios_permissoes
+AS SELECT u.nome, u.usuario, p.descricao
+FROM usuarios u
+INNER JOIN permissoes p ON (p.id=u.id_permissoes);
+
+-- Tabela imoveis
+-- Tabela fotos
+-- CREATE TABLE
+-- tabela videos
+>>>>>>> 4c60f32b85ce0d4f05498bbb436b3df0934d62d9
 -- Tabela clientes
 
 -- Tabela Financeiro
