@@ -7,7 +7,7 @@
   </head>
   <body>
     <?php
-      require_once '../classes/bd.class.php';
+      require_once '../classes/user.class.php';
 
       $vSenha = $_POST['senha'];
       $vUsuario = $_POST['usuario'];
