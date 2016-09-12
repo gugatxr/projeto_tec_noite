@@ -8,15 +8,15 @@
 
 		<body class="container">
 
-			<form class="box-login" action="autenticacao.php" method="POST">
+			<form class="box-login" action="processos/autenticacao.php" method="POST">
 					<h1 style="font-style: italic;"> Login</h1><p>
 			<label for="usuario">Usuário</label>
 
-			<input type="text" placeholder="Usuário" required="required" /><p>
+			<input type="text" placeholder="Usuário" required="required" name='usuario'/><p>
 
 			<label for="senha">Senha</label>
 
-			<input type="password" placeholder="Senha" required="required" minlength="5"/>
+			<input type="password" placeholder="Senha" required="required" minlength="5" name='senha'/>
 				  <label><p>
 				<button type="submit">Acessar</button><br><br>
 			</form>

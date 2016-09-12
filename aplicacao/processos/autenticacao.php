@@ -9,10 +9,10 @@
     <?php
       require_once '../classes/bd.class.php';
 
-      //$vSenha = $_POST['senha'];
-      //$vUsuario = $_POST['usuario'];
-      $vSenha = "admin";
-      $vUsuario = "admin";
+      $vSenha = $_POST['senha'];
+      $vUsuario = $_POST['usuario'];
+      // $vSenha = "admin";
+      // $vUsuario = "admin";
       $vConsulta_sql = "SELECT nome , id_permissoes FROM imobiliaria.usuarios WHERE usuario = '$vUsuario' AND senha = '$vSenha' ";
 
 
