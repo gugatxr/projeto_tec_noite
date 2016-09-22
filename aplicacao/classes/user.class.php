@@ -1,4 +1,9 @@
 <?php
+// Classe Usuário com as funções
+// Validação de Login
+// CRUD - criar, consultar, atalizar, excluir usuarios do sistema
+
+
 //Corrige caracteres especiais.
 ini_set('default_charset' , 'utf-8');
 
@@ -21,13 +26,14 @@ require_once 'bd.class.php';
   //Funcão de inserir usuario no banco.
   // $nome, $usuario, $senha, $email - string
  // $id_permissao - int
-  public function insere($nome, $usuario, $senha, $id_permissoes, $email){
-    $armazenaSql = "INSERT INTO $this->tabela (nome, usuario, senha, id_permissoes, email)
-            values ('$nome', '$usuario', '$senha', $id_permissoes, '$email')";
-            echo "$armazenaSql";
-    $resultado = conexaobd::query($armazenaSql);
-    return $resultado;
+  // public function insere($nome, $usuario, $senha, $id_permissoes, $email){
+  //           echo "$armazenaSql";
+  //   $armazenaSql = "INSERT INTO $this->tabela (nome, usuario, senha, id_permissoes, email)
+  //           values ('$nome', '$usuario', '$senha', $id_permissoes, '$email')";
+  //   $resultado = conexaobd::query($armazenaSql);
+  //   return $resultado;
   }
+
   // função para validar login
   public function validaLogin($usuario, $senha){
     $selectSql = "SELECT nome , id_permissoes
@@ -47,22 +53,71 @@ require_once 'bd.class.php';
     }
       return $resultado;
   }
+  //funções CRUD
+  //Função  para inserir Usuário
+
   public function inserirUsuario(){
     // $nome = $_POST['nome'];
     // $usuario = $_POST['usuario'];
     // $senha = $_POST['senha'];
     // $email = $_POST['email'];
     // $id_permissoes = $_POST['id_permissoes'];
-    $nome = 'gustavo';
+    $nome = 'gustavoooo';
     $usuario = 'gus';
-    $senha = '12345';
+    $senha = '1234567';
     $email = 'gus@gus.com';
     $id_permissoes = '1';
 
-    $sql = "INSERT INTO (nome, usuario, senha, email, id_permissoes)
+    $sql = "INSERT INTO $this->tabela (nome, usuario, senha, email, id_permissoes)
               values ('$nome', '$usuario', '$senha', '$email', $id_permissoes)";
     $resultado = parent::query($sql);
     return $resultado;
   }
+
+  //Função para Excluir Usuário
+  public function excluirUsuario(){
+
+    $id = 2;
+
+    $sql = "DELETE FROM $this->tabela WHERE id='. $id';";
+    $resultado = parent::query($sql);
+
+    return $resultado;
+  }
+
+  //Função para Consultar Usuário
+  public function consultarUsuario(){
+    $sql = "SELECT * FROM $this->tabela WHERE nome is not null";
+    $resultado = parent::query($sql);
+    while ($dados = $resultado->fetch_array()) {
+      var_dump($dados);
+    }
+    return $resultado;
+
+  }
+
+  //Função para Editar Usuário
+  public function editarUsuario(){
+      // $nome = $_POST['nome'];
+      // $usuario = $_POST['usuario'];
+      // $senha = $_POST['senha'];
+      // $email = $_POST['email'];
+      // $id_permissoes = $_POST['id_permissoes'];
+      $nome = 'joaosadas';
+      $usuario = 'josss';
+      $senha = '13242';
+      $email = 'j@j.com';
+      $id_permissoes = '1';
+
+      $sql = "UPDATE usuarios
+                  SET nome='$nome', usuario='$usuario', email='$email', senha='$senha', id_permissoes=$id_permissoes
+                      where id=13";
+      $resultado = parent::query($sql);
+      var_dump($resultado);
+      echo "$sql";
+      return $resultado;
+    }
+
 }
-$usuario = new usuario();
+//$usuario = new usuario();
+//$resultado = $usuario->consultarUsuario();
