@@ -16,6 +16,7 @@ require_once 'bd.class.php';
         private $senha;
         private $email;
         private $id_permissoes;
+        private $id;
         private $tabela = 'usuarios';
 
   function __construct() {
@@ -23,17 +24,20 @@ require_once 'bd.class.php';
     parent::__construct();
   }
 
-  //Funcão de inserir usuario no banco.
-  // $nome, $usuario, $senha, $email - string
- // $id_permissao - int
-  // public function insere($nome, $usuario, $senha, $id_permissoes, $email){
-  //           echo "$armazenaSql";
-  //   $armazenaSql = "INSERT INTO $this->tabela (nome, usuario, senha, id_permissoes, email)
-  //           values ('$nome', '$usuario', '$senha', $id_permissoes, '$email')";
-  //   $resultado = conexaobd::query($armazenaSql);
-  //   return $resultado;
-  }
+  public function setUsuario(){
+    // $this->nome = $_POST['nome'];
+    // $this->usuario = $_POST['usuario'];
+    // $this->senha = $_POST['senha'];
+    // $this->email = $_POST['email'];
+    // $this->id_permissoes = $_POST['id_permissoes'];
 
+    $this->nome = 'gaba';
+    $this->usuario = 'gaba';
+    $this->senha  = '12';
+    $this->email  = 'g@g.coms';
+    $this->id_permissoes  = '1';
+
+  }
   // função para validar login
   public function validaLogin($usuario, $senha){
     $selectSql = "SELECT nome , id_permissoes
@@ -57,29 +61,19 @@ require_once 'bd.class.php';
   //Função  para inserir Usuário
 
   public function inserirUsuario(){
-    // $nome = $_POST['nome'];
-    // $usuario = $_POST['usuario'];
-    // $senha = $_POST['senha'];
-    // $email = $_POST['email'];
-    // $id_permissoes = $_POST['id_permissoes'];
-    $nome = 'gustavoooo';
-    $usuario = 'gus';
-    $senha = '1234567';
-    $email = 'gus@gus.com';
-    $id_permissoes = '1';
-
+    $this->setUsuario();
     $sql = "INSERT INTO $this->tabela (nome, usuario, senha, email, id_permissoes)
-              values ('$nome', '$usuario', '$senha', '$email', $id_permissoes)";
+              values ('$this->nome', '$this->usuario', '$this->senha', '$this->email', $this->id_permissoes)";
     $resultado = parent::query($sql);
+    var_dump($resultado);
+    echo "$sql";
     return $resultado;
   }
 
   //Função para Excluir Usuário
   public function excluirUsuario(){
-
-    $id = 2;
-
-    $sql = "DELETE FROM $this->tabela WHERE id='. $id';";
+    $id = 6;
+    $sql = "DELETE FROM $this->tabela WHERE id=$id;";
     $resultado = parent::query($sql);
 
     return $resultado;
@@ -96,22 +90,13 @@ require_once 'bd.class.php';
 
   }
 
-  //Função para Editar Usuário
+  //Função para Editar Usuários
   public function editarUsuario(){
-      // $nome = $_POST['nome'];
-      // $usuario = $_POST['usuario'];
-      // $senha = $_POST['senha'];
-      // $email = $_POST['email'];
-      // $id_permissoes = $_POST['id_permissoes'];
-      $nome = 'joaosadas';
-      $usuario = 'josss';
-      $senha = '13242';
-      $email = 'j@j.com';
-      $id_permissoes = '1';
 
+      $this->setUsuario();
       $sql = "UPDATE usuarios
-                  SET nome='$nome', usuario='$usuario', email='$email', senha='$senha', id_permissoes=$id_permissoes
-                      where id=13";
+                  SET nome='$this->nome', usuario='$this->usuario', email='$this->email', senha='$this->senha', id_permissoes=$this->id_permissoes
+                      where id=6";
       $resultado = parent::query($sql);
       var_dump($resultado);
       echo "$sql";
@@ -119,5 +104,5 @@ require_once 'bd.class.php';
     }
 
 }
-//$usuario = new usuario();
-//$resultado = $usuario->consultarUsuario();
+$usuario = new usuario();
+$resultado = $usuario->consultarUsuario();
