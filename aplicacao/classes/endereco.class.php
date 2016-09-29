@@ -24,9 +24,9 @@ require_once 'bd.class.php';
     // $this->descricaoCidade = $_POST['descricaoCidade'];
     // $this->descricaoBairro = $_POST['descricaoBairro'];
 
-    $this->descricaoEstado = 'mato grosso';
-    $this->descricaoCidade = 'capao da canoa';
-    $this->descricaoBairro = 'Centro';
+    $this->descricaoEstado = 'parana';
+    $this->descricaoCidade = 'poa';
+    $this->descricaoBairro = 'bairro2';
     $this->id_estado = '3';
     $this->id_cidade = '';
   }
@@ -37,12 +37,14 @@ require_once 'bd.class.php';
     $sql = "INSERT INTO $this->tabelaEstado (descricao)
               VALUES ('$this->descricaoEstado')";
     $resultado = parent::query($sql);
+    var_dump($resultado);
+    echo "$sql";
     return $resultado;
   }
 
   public function editarEstado(){
     $this->setEndereco();
-    $id = 2;
+    $id = 12;
     $sql = "UPDATE $this->tabelaEstado
               SET descricao='$this->descricaoEstado'
                   WHERE id=$id;";
@@ -60,7 +62,7 @@ require_once 'bd.class.php';
   }
 
   public function excluirEstado(){
-    $id = 2;
+    $id = 6;
     $sql = "DELETE FROM $this->tabelaEstado WHERE id=$id;";
     $resultado = parent::query($sql);
     return $resultado;
@@ -77,7 +79,7 @@ require_once 'bd.class.php';
 
   public function editarCidade(){
     $this->setEndereco();
-    $id = '3';
+    $id = '58';
     $sql = "UPDATE $this->tabelaCidade
               SET descricao='$this->descricaoCidade' , id_estado=$this->id_estado
                 WHERE id=$id";
@@ -85,7 +87,7 @@ require_once 'bd.class.php';
     return $resultado;
   }
     public function excluirCidade(){
-      $id = '26';
+      $id = '58';
       $sql = "DELETE FROM $this->tabelaCidade WHERE id=$id";
       $resultado = parent::query($sql);
       return $resultado;
@@ -102,4 +104,4 @@ require_once 'bd.class.php';
 }
 
 $estado = new endereco();
-$resultado = $estado->consultarCidade();
+$resultado = $estado->excluirCidade();
