@@ -1,0 +1,23 @@
+
+php
+
+inserir		ok
+excluir		ok
+consultar	ok
+atualizar	
+
+html/css
+
+inserir		ok
+excluir			
+consultar	
+atualizar	ok
+
+
+integração layout com php
+
+inserir		
+consulta	
+excluir		
+atualizar	
+
