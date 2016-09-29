@@ -4,16 +4,16 @@
 }
 
 body  {
-  background-color: :#f1f1f1;
+  background-color: #f1f1f1;
 }
 
-/*estilos da tela de login*/
+/*estilos da tela de login e tela de cadastro de usuarios*/
 .container {
 margin:0px;
 background: #c9c0c8
 }
 
-.box-login{
+.box-login , .box-cadastro , .box-consultar{
 position: relative;
 text-align:center;
 left:480px;
@@ -24,22 +24,65 @@ border-style: solid;
 box-shadow: 3px 2px 1px #9999999;
 border-radius:10px;
 }
+/*estilos da tela de cadastro de usuarios*/
+.box-cadastro input {
+margin:5px;	
+}
 
 /*Estilos do menu*/
 .nav {
-	margin: 0;
+	margin:0px;
 	padding:0 ;
-	background-color: :#4a5718;
+	background-color: #fff;
 	float: left;
 }
 
 .nav li{
-	/*list-style: nome;*/
-	border-bottom: 1px solid #666;
+	list-style: nome;
+	border-bottom: 4px solid #201070;
 	}
 
-.nav li , .nav a {
+.nav li {
 	display: block;
-	padding:8px;
-	border-left : 4px solid #809786;
+	padding:17px;
+	border-left : 4px solid #174bbd;
+	box-shadow: 2px 2px 5px #665b5e;
 	}
+.nav a {
+	text-decoration: none;
+	
+	
+	}
+.nav li a: hover{
+border-left: 9px solid #e3141f;
+background-color:#f8f8f8;	
+}
+.nav li ul { 
+display: none;
+}
+/*Estilos do cabecalho*/
+
+.cabecalho{
+position: relative;
+text-align:center;	
+margin:4px;
+padding:4px;	
+background-color:red;	
+	
+	
+} 
+.cabecalho div{
+font-size: 100px;	
+}
+
+.cabecalho h1{
+
+
+font-size: 95px;
+color:blue; 	
+font-family:italic;	
+	
+}
+
+	
+	

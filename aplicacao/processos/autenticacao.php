@@ -7,11 +7,11 @@
   </head>
   <body>
     <?php
-      require_once '../classes/user.class.php';
-      $validaLogin = new usuario();
+      require_once '../classes/bd.class.php';
 
-      $senha = $_POST['senha'];
-      $usuario = $_POST['usuario'];
+      $vSenha = $_POST['senha'];
+      $vUsuario = $_POST['usuario'];
+      $vConsulta_sql = "SELECT nome , id_permissoes FROM imobiliaria.usuarios WHERE usuario = '$vUsuario' AND senha = '$vSenha' ";
 
       $resultadologin = $validaLogin->validaLogin($usuario, $senha);
 
