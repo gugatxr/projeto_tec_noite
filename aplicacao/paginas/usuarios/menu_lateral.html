@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title> menu</title>
+		<link = rel = "stylesheet" href = "../../css/style.css">
+			<script type="text/javascript" src="js/jquery.js"></script>
+			<script language="JavaScript" type="text/javascript">
+	$(function() {
+		// Evento de clique do elemento: ul#menu li.parent > a
+		$('ul#nav li.usuario > a').click(function() {
+		//Expande ou retrai o elemento ul.sub-menu dentro do elemento pai (ul#usuario li.editar)
+		$('ul.sub-menu', $(this).editar()).slideToggle('fast', function() {
+			//Depois de expandir ou retrair, troca a classe 'aberto' do <a> clicado       
+			$(this).parent().toggleClass('aberto');
+			});
+				   return false;
+	});
+});
+</script>
+	</head>
+	<body>
+	
+		<ul class="nav">
+		
+			<li><a href="#">usuario</a></li>
+			<ul>
+			<li><a href = sub - 1</a>editar<li>
+			<li><a href="#">papai</a></li>
+			<li><a href="#">mamae</a></li>
+			<li><a href="#">praga do odio</a></li>
+			
+		</ul>
+
+		
+	
+	</body>
+</html>
