@@ -7,31 +7,23 @@
   </head>
   <body>
     <?php
+<<<<<<< HEAD
       require_once '../classes/bd.class.php';
 
       $vSenha = $_POST['senha'];
       $vUsuario = $_POST['usuario'];
       $vConsulta_sql = "SELECT nome , id_permissoes FROM imobiliaria.usuarios WHERE usuario = '$vUsuario' AND senha = '$vSenha' ";
+=======
+      require_once '../classes/user.class.php';
+      $validaLogin = new usuario();
 
+      $senha = $_POST['senha'];
+      $usuario = $_POST['usuario'];
+>>>>>>> classUser
 
-      //Consulta no sql para validação de LogicException
-      $vResultado_autenticacao = $bd->query($vConsulta_sql);
-      $vNumero_registro = mysqli_num_rows($vResultado_autenticacao);
-      $vDados_do_usuario = mysqli_fetch_array($vResultado_autenticacao);
-      if ($vNumero_registro === 0) {
-        echo "Usuário ou senha inválida. Tente novamente";
-      }
-      else {
+      $resultadologin = $validaLogin->validaLogin($usuario, $senha);
+
+      echo $resultadologin;
       ?>
-         <div style='
-                position'>
-
-              Login aceito <br>
-              Bem Vindo  <?php echo $vDados_do_usuario['nome'] ?> <div>
-      <?php }
-      ?>
-
-
-
   </body>
 </html>
