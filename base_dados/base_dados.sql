@@ -19,8 +19,6 @@ CREATE TABLE IF NOT EXISTS usuarios(
   email VARCHAR(45) NOT NULL,
   senha VARCHAR(200) NOT NULL,
   id_permissoes INT(10) NOT NULL,
-  -- quando que simula exclusao, se 1 está ativo, se 0 entao esta deletado.
-  ativo BOOLEAN DEFAULT 1,
 
   CONSTRAINT PrkPermissoes FOREIGN KEY (id_permissoes) REFERENCES permissoes(id)
 );
