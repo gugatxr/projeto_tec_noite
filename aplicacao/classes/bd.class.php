@@ -8,7 +8,7 @@ ini_set('default_charset' , 'utf-8');
         private $vServidor = 'localhost';
         private $vDatabase = 'imobiliaria';
         private $vUsuario = 'root';
-        private $vSenha = '1234';
+        private $vSenha = 'wanrltwaez';
         private $vConexao;
 
         function __construct(){

@@ -67,19 +67,25 @@ position: relative;
 text-align:center;	
 margin:4px;
 padding:4px;	
-background-color:red;	
+background-color:#fff;;	
 	
 	
 } 
 .cabecalho div{
-font-size: 100px;	
+font-size: 99px;	
+
+
 }
 
 .cabecalho h1{
 
-
-font-size: 95px;
-color:blue; 	
+border-width:5px;
+border-style:solid;
+border-color:;
+width:;
+height:;
+font-size: 79px;
+color:bleck; 	
 font-family:italic;	
 	
 }

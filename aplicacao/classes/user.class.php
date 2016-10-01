@@ -25,35 +25,49 @@ require_once 'bd.class.php';
   }
 
   public function setUsuario(){
-    // $this->nome = $_POST['nome'];
-    // $this->usuario = $_POST['usuario'];
-    // $this->senha = $_POST['senha'];
-    // $this->email = $_POST['email'];
-    // $this->id_permissoes = $_POST['id_permissoes'];
+    $this->nome = $_POST['nome'];
+    $this->usuario = $_POST['usuario'];
+    $this->senha = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+    $this->email = $_POST['email'];
+    $this->id_permissoes = $_POST['id_permissoes'];
 
-    $this->nome = 'gaba';
-    $this->usuario = 'gaba';
-    $this->senha  = '12';
-    $this->email  = 'g@g.coms';
-    $this->id_permissoes  = '1';
+    // $this->nome = 'gaba';
+    // $this->usuario = 'gaba';
+    // $this->senha  = '12';
+    // $this->email  = 'g@g.coms';
+    // $this->id_permissoes  = '1';
 
   }
-  // função para validar login
-  public function validaLogin($usuario, $senha){
-    $selectSql = "SELECT nome , id_permissoes
-                      FROM imobiliaria.usuarios
-                      WHERE usuario = '$usuario' AND senha = '$senha' ";
 
+  /* função para validar login
+  * usuario string
+  * resultado_verificacao_senha hash senha
+  */
+  public function validaLogin(){
+    //recebe variaveis do formulario via post
+    $usuario = $_POST['usuario'];
+    $senha = $_POST['senha'];
+
+    //consulta que retorna a senha do banco para verificar com a senha digitada
+    $selectSql = "SELECT senha
+                      FROM imobiliaria.usuarios
+                      WHERE usuario = '$usuario' OR email = '$usuario'  ";
+    //envia query para o banco de dados
     $vResultado_autenticacao = parent::query($selectSql);
-    $vNumero_registro = mysqli_num_rows($vResultado_autenticacao);
-    $vDados_do_usuario = mysqli_fetch_array($vResultado_autenticacao);
-    if ($vNumero_registro === 0) {
+    //trata o resultado com array associativo. $senha_usuario['senha']
+    $senha_usuario = mysqli_fetch_assoc($vResultado_autenticacao);
+    // password_verify retorna TRUE ou FALSE verificando a hash armazenada no banco.
+    // $senha string via Post
+    // $senha_usuario['senha'] hash da senha armazenada
+    $resultado_verificacao_senha = password_verify($senha, $senha_usuario['senha']);
+
+    if ($resultado_verificacao_senha === FALSE) {
       $resultado =  "Usuário ou senha inválida. Tente novamente";
     }
-    else {
-      $resultado = 'Login aceito <br>
-      Bem Vindo ' . $vDados_do_usuario['nome'];
+    elseif($resultado_verificacao_senha === TRUE) {
 
+      $resultado = 'Login aceito <br>
+      Bem Vindo '; //$vDados_do_usuario['nome'];
     }
       return $resultado;
   }
@@ -65,8 +79,6 @@ require_once 'bd.class.php';
     $sql = "INSERT INTO $this->tabela (nome, usuario, senha, email, id_permissoes)
               values ('$this->nome', '$this->usuario', '$this->senha', '$this->email', $this->id_permissoes)";
     $resultado = parent::query($sql);
-    var_dump($resultado);
-    echo "$sql";
     return $resultado;
   }
 
@@ -105,4 +117,3 @@ require_once 'bd.class.php';
 
 }
 $usuario = new usuario();
-$resultado = $usuario->consultarUsuario();
